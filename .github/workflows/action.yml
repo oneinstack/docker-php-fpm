@@ -81,6 +81,18 @@ jobs:
       stage: base
       stage_prev: ''
 
+  test-base:
+    needs:
+      - configure
+      - build-base
+    uses: oneinstack/github-actions/.github/workflows/docker-multistage-test.yml@main
+    with:
+      has_refs: ${{ needs.configure.outputs.has_refs == 'true' }}
+      matrix: ${{ needs.configure.outputs.matrix_build }}
+      artifact_prefix: ${{ needs.configure.outputs.artifact_prefix }}
+      stage: base
+
+
   # -----------------------------------------------------------------------------------------------
   # (4/9) Build & Test mods
   # -----------------------------------------------------------------------------------------------
@@ -97,6 +109,18 @@ jobs:
       artifact_prefix: ${{ needs.configure.outputs.artifact_prefix }}
       stage: mods
       stage_prev: base
+
+  test-mods:
+    needs:
+      - configure
+      - build-mods
+    uses: oneinstack/github-actions/.github/workflows/docker-multistage-test.yml@main
+    with:
+      has_refs: ${{ needs.configure.outputs.has_refs == 'true' }}
+      matrix: ${{ needs.configure.outputs.matrix_build }}
+      artifact_prefix: ${{ needs.configure.outputs.artifact_prefix }}
+      stage: mods
+
 
   # -----------------------------------------------------------------------------------------------
   # (5/9) Build & Test prod
@@ -115,12 +139,27 @@ jobs:
       stage: prod
       stage_prev: mods
 
+  test-prod:
+    needs:
+      - configure
+      - build-prod
+    uses: oneinstack/github-actions/.github/workflows/docker-multistage-test.yml@main
+    with:
+      has_refs: ${{ needs.configure.outputs.has_refs == 'true' }}
+      matrix: ${{ needs.configure.outputs.matrix_build }}
+      artifact_prefix: ${{ needs.configure.outputs.artifact_prefix }}
+      stage: prod
+
+
   # -----------------------------------------------------------------------------------------------
   # (8/9) Push images
   # -----------------------------------------------------------------------------------------------
   push-base:
     needs:
       - configure
+      - test-base
+      - test-mods
+      - test-prod
     uses: oneinstack/github-actions/.github/workflows/docker-multistage-push-image.yml@main
     with:
       can_deploy: ${{ needs.configure.outputs.can_login == 'true' && needs.configure.outputs.can_push == 'true' }}
@@ -135,6 +174,9 @@ jobs:
   push-mods:
     needs:
       - configure
+      - test-base
+      - test-mods
+      - test-prod
     uses: oneinstack/github-actions/.github/workflows/docker-multistage-push-image.yml@main
     with:
       can_deploy: ${{ needs.configure.outputs.can_login == 'true' && needs.configure.outputs.can_push == 'true' }}
@@ -149,6 +191,9 @@ jobs:
   push-prod:
     needs:
       - configure
+      - test-base
+      - test-mods
+      - test-prod
     uses: oneinstack/github-actions/.github/workflows/docker-multistage-push-image.yml@main
     with:
       can_deploy: ${{ needs.configure.outputs.can_login == 'true' && needs.configure.outputs.can_push == 'true' }}
