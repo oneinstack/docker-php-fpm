@@ -1,0 +1,65 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: generator
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  # Runs on Pull Requests
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.ansible/**'
+      - '.github/workflows/action.yml'
+      - '.github/workflows/params.yml'
+      - 'Dockerfiles/**'
+      - 'php_modules/**'
+      - 'php_tools/**'
+      - 'tests/**'
+      - 'Makefile'
+      - '!**.md'
+      - '!.ansible/ansible.cfg'
+
+
+# -------------------------------------------------------------------------------------------------
+# What to run
+# -------------------------------------------------------------------------------------------------
+jobs:
+  generator:
+    name: "Generator"
+    runs-on: ubuntu-latest
+    steps:
+      # ------------------------------------------------------------
+      # Setup repository
+      # ------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install required Python packages
+        run: |
+          pip install yamllib
+          pip install typing
+
+      # ------------------------------------------------------------
+      # Lint repository
+      # ------------------------------------------------------------
+      - name: Lint Changelog
+        run: |
+          make lint-changelog
+
+      - name: Diff generated Docker files
+        run: |
+          make gen-dockerfiles
+          git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
