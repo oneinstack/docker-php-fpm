@@ -1,18 +1,6 @@
 # PHP-FPM Docker images
 
-[![Release](https://img.shields.io/github/release/devilbox/docker-php-fpm.svg?colorB=orange)](https://github.com/devilbox/docker-php-fpm/releases)
-[![](https://img.shields.io/badge/github-devilbox%2Fdocker--php--fpm-red.svg)](https://github.com/devilbox/docker-php-fpm "github.com/devilbox/docker-php-fpm")
-[![lint](https://github.com/devilbox/docker-php-fpm/workflows/lint/badge.svg)](https://github.com/devilbox/docker-php-fpm/actions?workflow=lint)
-[![build](https://github.com/devilbox/docker-php-fpm/workflows/build/badge.svg)](https://github.com/devilbox/docker-php-fpm/actions?workflow=build)
-[![nightly](https://github.com/devilbox/docker-php-fpm/workflows/nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm/actions?workflow=nightly)
-[![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
-
-[![Discord](https://img.shields.io/discord/1051541389256704091?color=8c9eff&label=Discord&logo=discord)](https://discord.gg/2wP3V6kBj4)
-[![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697&label=Discourse&logo=discourse)](https://devilbox.discourse.group)
-
 **Available Architectures:**  `amd64`, `arm64`
-
-[![](https://img.shields.io/docker/pulls/devilbox/php-fpm.svg)](https://hub.docker.com/r/devilbox/php-fpm)
 
 This repository will provide you fully functional PHP-FPM Docker images in different flavours,
 versions and packed with different types of integrated PHP modules. It also solves the problem of **[syncronizing file permissions](doc/syncronize-file-permissions.md)** of mounted volumes between the host and the container.
@@ -21,38 +9,26 @@ versions and packed with different types of integrated PHP modules. It also solv
 
 This repository also allows you to quickly generate and **build your own custom PHP-FPM Docker image** with whatever PHP extension your desire for whatever PHP version you want and for any platform you're on (`amd64` or `arm64`). Jump to **[#Build your own image](#build-your-own-image)**.
 
-
-| PHP-FPM          | Reference Implementation |
-|:----------------:|:------------------------:|
-| <a title="Docker PHP-FPM" href="https://github.com/devilbox/docker-php-fpm" ><img height="82px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/02/png/banner_256_trans.png" /></a> | <a title="Devilbox" href="https://github.com/cytopia/devilbox" ><img height="82px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/01/png/banner_256_trans.png" /></a> |
-| Streamlined [PHP-FPM](https://github.com/devilbox/docker-php-fpm) images | The [Devilbox](https://github.com/cytopia/devilbox) |
-
-
-
-<h2><img id="docker-tags" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Docker Tags</h2>
-
-[![](https://img.shields.io/docker/pulls/devilbox/php-fpm.svg)](https://hub.docker.com/r/devilbox/php-fpm)
+<h2>Docker Tags</h2>
 
 ```bash
-docker pull devilbox/php-fpm:<tag>
+docker pull oneinstack/php-fpm:<tag>
 ```
 
-* [`5.2-base`](Dockerfiles/base/Dockerfile-5.2), [`5.3-base`](Dockerfiles/base/Dockerfile-5.3), [`5.4-base`](Dockerfiles/base/Dockerfile-5.4), [`5.5-base`](Dockerfiles/base/Dockerfile-5.5), [`5.6-base`](Dockerfiles/base/Dockerfile-5.6), [`7.0-base`](Dockerfiles/base/Dockerfile-7.0), [`7.1-base`](Dockerfiles/base/Dockerfile-7.1), [`7.2-base`](Dockerfiles/base/Dockerfile-7.2), [`7.3-base`](Dockerfiles/base/Dockerfile-7.3), [`7.4-base`](Dockerfiles/base/Dockerfile-7.4), [`8.0-base`](Dockerfiles/base/Dockerfile-8.0), [`8.1-base`](Dockerfiles/base/Dockerfile-8.1), [`8.2-base`](Dockerfiles/base/Dockerfile-8.2)
-* [`5.2-mods`](Dockerfiles/mods/Dockerfile-5.2), [`5.3-mods`](Dockerfiles/mods/Dockerfile-5.3), [`5.4-mods`](Dockerfiles/mods/Dockerfile-5.4), [`5.5-mods`](Dockerfiles/mods/Dockerfile-5.5), [`5.6-mods`](Dockerfiles/mods/Dockerfile-5.6), [`7.0-mods`](Dockerfiles/mods/Dockerfile-7.0), [`7.1-mods`](Dockerfiles/mods/Dockerfile-7.1), [`7.2-mods`](Dockerfiles/mods/Dockerfile-7.2), [`7.3-mods`](Dockerfiles/mods/Dockerfile-7.3), [`7.4-mods`](Dockerfiles/mods/Dockerfile-7.4), [`8.0-mods`](Dockerfiles/mods/Dockerfile-8.0), [`8.1-mods`](Dockerfiles/mods/Dockerfile-8.1), [`8.2-mods`](Dockerfiles/mods/Dockerfile-8.2)
-* [`5.2-prod`](Dockerfiles/prod/Dockerfile-5.2), [`5.3-prod`](Dockerfiles/prod/Dockerfile-5.3), [`5.4-prod`](Dockerfiles/prod/Dockerfile-5.4), [`5.5-prod`](Dockerfiles/prod/Dockerfile-5.5), [`5.6-prod`](Dockerfiles/prod/Dockerfile-5.6), [`7.0-prod`](Dockerfiles/prod/Dockerfile-7.0), [`7.1-prod`](Dockerfiles/prod/Dockerfile-7.1), [`7.2-prod`](Dockerfiles/prod/Dockerfile-7.2), [`7.3-prod`](Dockerfiles/prod/Dockerfile-7.3), [`7.4-prod`](Dockerfiles/prod/Dockerfile-7.4), [`8.0-prod`](Dockerfiles/prod/Dockerfile-8.0), [`8.1-prod`](Dockerfiles/prod/Dockerfile-8.1), [`8.2-prod`](Dockerfiles/prod/Dockerfile-8.2)
-* [`5.2-slim`](Dockerfiles/slim/Dockerfile-5.2), [`5.3-slim`](Dockerfiles/slim/Dockerfile-5.3), [`5.4-slim`](Dockerfiles/slim/Dockerfile-5.4), [`5.5-slim`](Dockerfiles/slim/Dockerfile-5.5), [`5.6-slim`](Dockerfiles/slim/Dockerfile-5.6), [`7.0-slim`](Dockerfiles/slim/Dockerfile-7.0), [`7.1-slim`](Dockerfiles/slim/Dockerfile-7.1), [`7.2-slim`](Dockerfiles/slim/Dockerfile-7.2), [`7.3-slim`](Dockerfiles/slim/Dockerfile-7.3), [`7.4-slim`](Dockerfiles/slim/Dockerfile-7.4), [`8.0-slim`](Dockerfiles/slim/Dockerfile-8.0), [`8.1-slim`](Dockerfiles/slim/Dockerfile-8.1), [`8.2-slim`](Dockerfiles/slim/Dockerfile-8.2)
-* [`5.2-work`](Dockerfiles/work/Dockerfile-5.2), [`5.3-work`](Dockerfiles/work/Dockerfile-5.3), [`5.4-work`](Dockerfiles/work/Dockerfile-5.4), [`5.5-work`](Dockerfiles/work/Dockerfile-5.5), [`5.6-work`](Dockerfiles/work/Dockerfile-5.6), [`7.0-work`](Dockerfiles/work/Dockerfile-7.0), [`7.1-work`](Dockerfiles/work/Dockerfile-7.1), [`7.2-work`](Dockerfiles/work/Dockerfile-7.2), [`7.3-work`](Dockerfiles/work/Dockerfile-7.3), [`7.4-work`](Dockerfiles/work/Dockerfile-7.4), [`8.0-work`](Dockerfiles/work/Dockerfile-8.0), [`8.1-work`](Dockerfiles/work/Dockerfile-8.1), [`8.2-work`](Dockerfiles/work/Dockerfile-8.2)
+* [`5.3-base`](Dockerfiles/base/Dockerfile-5.3), [`5.4-base`](Dockerfiles/base/Dockerfile-5.4), [`5.5-base`](Dockerfiles/base/Dockerfile-5.5), [`5.6-base`](Dockerfiles/base/Dockerfile-5.6), [`7.0-base`](Dockerfiles/base/Dockerfile-7.0), [`7.1-base`](Dockerfiles/base/Dockerfile-7.1), [`7.2-base`](Dockerfiles/base/Dockerfile-7.2), [`7.3-base`](Dockerfiles/base/Dockerfile-7.3), [`7.4-base`](Dockerfiles/base/Dockerfile-7.4), [`8.0-base`](Dockerfiles/base/Dockerfile-8.0), [`8.1-base`](Dockerfiles/base/Dockerfile-8.1), [`8.2-base`](Dockerfiles/base/Dockerfile-8.2)
+* [`5.3-mods`](Dockerfiles/mods/Dockerfile-5.3), [`5.4-mods`](Dockerfiles/mods/Dockerfile-5.4), [`5.5-mods`](Dockerfiles/mods/Dockerfile-5.5), [`5.6-mods`](Dockerfiles/mods/Dockerfile-5.6), [`7.0-mods`](Dockerfiles/mods/Dockerfile-7.0), [`7.1-mods`](Dockerfiles/mods/Dockerfile-7.1), [`7.2-mods`](Dockerfiles/mods/Dockerfile-7.2), [`7.3-mods`](Dockerfiles/mods/Dockerfile-7.3), [`7.4-mods`](Dockerfiles/mods/Dockerfile-7.4), [`8.0-mods`](Dockerfiles/mods/Dockerfile-8.0), [`8.1-mods`](Dockerfiles/mods/Dockerfile-8.1), [`8.2-mods`](Dockerfiles/mods/Dockerfile-8.2)
+* [`5.3-prod`](Dockerfiles/prod/Dockerfile-5.3), [`5.4-prod`](Dockerfiles/prod/Dockerfile-5.4), [`5.5-prod`](Dockerfiles/prod/Dockerfile-5.5), [`5.6-prod`](Dockerfiles/prod/Dockerfile-5.6), [`7.0-prod`](Dockerfiles/prod/Dockerfile-7.0), [`7.1-prod`](Dockerfiles/prod/Dockerfile-7.1), [`7.2-prod`](Dockerfiles/prod/Dockerfile-7.2), [`7.3-prod`](Dockerfiles/prod/Dockerfile-7.3), [`7.4-prod`](Dockerfiles/prod/Dockerfile-7.4), [`8.0-prod`](Dockerfiles/prod/Dockerfile-8.0), [`8.1-prod`](Dockerfiles/prod/Dockerfile-8.1), [`8.2-prod`](Dockerfiles/prod/Dockerfile-8.2)
 
 :information_source: For details see **[Documentation: Docker Tags](doc/docker-tags.md)**<br/>
 :information_source: For details see **[Documentation: Supported Architectures](doc/supported-architectures.md)**
 
 
 
-<h2><img id="docker-tags" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> PHP Versions</h2>
+<h2>PHP Versions</h2>
 
 The following PHP versions are provided by this repository.
 
-* `PHP 5.2`, `PHP 5.3`, `PHP 5.4`, `PHP 5.5`, `PHP 5.6`
+* `PHP 5.3`, `PHP 5.4`, `PHP 5.5`, `PHP 5.6`
 * `PHP 7.0`, `PHP 7.1`, `PHP 7.2`, `PHP 7.3`, `PHP 7.4`
 * `PHP 8.0`, `PHP 8.1`, `PHP 8.2`
 
@@ -61,9 +37,7 @@ The following PHP versions are provided by this repository.
 :information_source: For details see **[Documentation: PHP Versions](doc/php-versions.md)**<br/>
 :information_source: For details see **[Documentation: Base Images](doc/base-images.md)**
 
-
-
-<h2><img id="php-fpm-flavours" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Flavours</h2>
+<h2>Flavours</h2>
 
 The provided Docker images heavily rely on inheritance to guarantee smallest possible image size. Each of them provide a working PHP-FPM server and you must decide what version works best for you. Look at the sketch below to get an overview about the two provided flavours and each of their different types.
 
@@ -81,24 +55,15 @@ The provided Docker images heavily rely on inheritance to guarantee smallest pos
           |              #
           |              #
         [prod]           # Devilbox flavour for production
-          ^              # (locales, postifx, socat and injectables)
-          |              # (custom *.ini files)
-          |              #
-        [slim]           # Devilbox flavour with only required
-          ^              # cli tools to have a functional intranet.
-          |              #
-          |              #
-        [work]           # Devilbox flavour for local development
-                         # (includes backup and development tools)
-                         # (sudo, custom bash and tool configs)
+                         # (locales, postifx, socat and injectables)
+                         # (custom *.ini files)
+                         #
 ```
 
 :information_source: For details see **[Documentation: Flavours](doc/flavours.md)**<br/>
 :information_source: For details see **[Documentation: Base Images](doc/base-images.md)**
 
-
-
-<h2><img id="php-extensions" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Available PHP extensions</h2>
+<h2>Available PHP extensions</h2>
 
 > Click below listed extensions for details:
 
@@ -216,8 +181,7 @@ The provided Docker images heavily rely on inheritance to guarantee smallest pos
 :information_source: For details see **[Contributor Documentation: PHP Module definition](php_modules/README.md)**
 
 
-
-<h2><img id="php-fpm-options" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Environment Variables</h2>
+<h2>Environment Variables</h2>
 
 The provided Docker images offer environment variables to alter their startup behaviour.
 
@@ -253,7 +217,7 @@ The provided Docker images offer environment variables to alter their startup be
 
 
 
-<h2><img id="php-fpm-options" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Volumes</h2>
+<h2>Volumes</h2>
 
 The provided Docker images offer different volumes to be mounted.
 
@@ -283,9 +247,7 @@ The provided Docker images offer different volumes to be mounted.
 [lnk_vol_backups]: doc/docker-volumes.md#-sharedbackups
 [lnk_vol_ca]: doc/docker-volumes.md#-ca
 
-
-
-<h2><img id="php-fpm-options" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Ports</h2>
+<h2>Ports</h2>
 
 Have a look at the following table to see all offered exposed ports for each Docker image flavour.
 
@@ -299,16 +261,14 @@ Have a look at the following table to see all offered exposed ports for each Doc
  </thead>
  <tbody>
   <tr>
-   <td rowspan="1"><strong>base</strong><br/><strong>mods</strong><br/><strong>prod</strong><br/><strong>slim</strong><br/><strong>work</strong></td>
+   <td rowspan="1"><strong>base</strong><br/><strong>mods</strong><br/><strong>prod</strong></td>
    <td><code>9000</code></td>
    <td>PHP-FPM listening port</td>
   </tr>
  </tbody>
 </table>
 
-
-
-<h2><img id="php-default-configuration" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> PHP Default Configuration</h2>
+<h2>PHP Default Configuration</h2>
 
 Each PHP version is using the same sane default php.ini values, making it pain-free to switch versions and not having to worry about different php.ini settings.
 **Note:** Flavours alway inherit the settings from its parent flavour if they have no own configuration.
@@ -321,22 +281,6 @@ Each PHP version is using the same sane default php.ini values, making it pain-f
 | slim    | [php.ini](Dockerfiles/slim/data/php-ini.d/) and [php-fpm.conf](Dockerfiles/slim/data/php-fpm.conf/) |
 | work    | inherits from slim                       |
 
-
-
-<h2><img id="integrated-development-environment" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Integrated Development Environment</h2>
-
-If you plan to use the PHP-FPM image for development, hence being able to execute common commands inside the container itself, you should go with the **work** Image.
-
-The **work** Docker image has many common tools already installed which on one hand increases its image size, but on the other hand removes the necessity to install those tools locally.
-
-You want to use tools such as `angular-cli`, `codeception`, **`composer`**, `deployer`, `eslint`, `git`, `grunt-cli`, `gulp`, `laravel-installer`, **`node`**, **`npm`**, **`nvm`**, `phalcon-devtools`, `phpcs`, `phpunit`, `pm2`, `symfony-cli`, `tig`, `vue`, `webpack-cli`, `wp-cli`, **`yarn`**, `yq`, `zsh` as well as many others, simply do it directly inside the container. As all Docker images are auto-built every night by GitHub Actions it is assured that you are always at the latest version of your favorite dev tool.
-
-<!-- Generate as such
-cat doc/available-tools.md | grep -Eo '\| \[.+\]\[' | sed -e 's/| \[//g' -e 's/].*//g' -e 's/*//g' | xargs -n1 sh -c 'printf "["\`"${1}"\`"](../php_tools/${1}/)\n"' -- | xclip
--->
-
-:information_source: For details see **[Documentation: Available Tools](doc/available-tools.md)**
-
 #### What else is available
 
 Apart from the provided tools, you will also be able to use the container similar as you would do with your host system. Just a few things to mention here:
@@ -345,14 +289,13 @@ Apart from the provided tools, you will also be able to use the container simila
 * Use password-less `sudo` to become root and do whatever you need to do
 
 
-
-<h2><img id="examples" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Examples</h2>
+<h2>Examples</h2>
 
 #### Provide PHP-FPM port to host
 ```shell
 docker run -d -it \
     -p 127.0.0.1:9000:9000 \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### Alter PHP-FPM and system timezone
@@ -360,7 +303,7 @@ docker run -d -it \
 docker run -d -it \
     -p 127.0.0.1:9000:9000 \
     -e TIMEZONE=Europe/Berlin \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### Load custom PHP configuration
@@ -378,7 +321,7 @@ echo "xdebug.mode = debug" > config/xdebug.ini
 docker run -d -it \
     -p 127.0.0.1:9000:9000 \
     -v config:/etc/php-custom.d \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### MySQL connect via 127.0.0.1 (via port-forward)
@@ -388,7 +331,7 @@ Forward MySQL Port from `172.168.0.30` (or any other IP address/hostname) and Po
 docker run -d -it \
     -p 127.0.0.1:9000:9000 \
     -e FORWARD_PORTS_TO_LOCALHOST='3306:172.168.0.30:3306' \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### MySQL and Redis connect via 127.0.0.1 (via port-forward)
@@ -398,7 +341,7 @@ Forward MySQL Port from `172.168.0.30:3306` and Redis port from `redis:6379` to 
 docker run -d -it \
     -p 127.0.0.1:9000:9000 \
     -e FORWARD_PORTS_TO_LOCALHOST='3306:172.168.0.30:3306, 6379:redis:6379' \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### Launch Postfix for mail-catching
@@ -409,7 +352,7 @@ docker run -d -it \
     -p 127.0.0.1:9000:9000 \
     -v /tmp/mail:/var/mail \
     -e ENABLE_MAIL=2 \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 ```
 
 #### Webserver and PHP-FPM
@@ -420,7 +363,7 @@ docker run -d -it \
 docker run -d -it \
     -v ~/my-host-www:/var/www/default/htdocs \
     --name php \
-    devilbox/php-fpm:7.2-prod
+    oneinstack/php-fpm:7.2-prod
 
 # Start webserver and link with PHP-FPM
 docker run -d -it \
@@ -430,48 +373,17 @@ docker run -d -it \
     -e PHP_FPM_SERVER_ADDR=php \
     -e PHP_FPM_SERVER_PORT=9000 \
     --link php \
-    devilbox/nginx-mainline
-```
-
-#### Create MySQL Backups
-
-**Note:** This will only work with `work` Docker images.
-
-The MySQL server could be another Docker container linked to the PHP-FPM container. Let's assume the PHP-FPM container is able to access the MySQL container by the hostname `mysql`.
-
-```
-# Start container
-docker run -d -it \
-    -e MYSQL_BACKUP_USER=root \
-    -e MYSQL_BACKUP_PASS=somepass \
-    -e MYSQL_BACKUP_HOST=mysql \
-    -v ~/backups:/shared/backups \
-    --name php \
-    devilbox/php-fpm:7.2-work
-
-# Run database dump
-docker exec -it php mysqldump-secure
+    oneinstack/nginx-mainline
 ```
 
 #### Docker Compose reference implementation
 
-If you want a fully functional Docker Compose setup, which allows to switch PHP versions easily, comes with web servers, database servers and much more, then head over to the **[Devilbox](https://github.com/cytopia/devilbox)** rerefence implementation :
+<h2>Automated builds</h2>
 
-| Reference Implementation |
-|--------------------------|
-| <a title="Devilbox" href="https://github.com/cytopia/devilbox" ><img title="Devilbox" height="82px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/01/png/banner_256_trans.png" /></a> |
+Docker images are built and tested every night by **[GitHub Actions](https://github.com/oneinstack/docker-php-fpm/actions?workflow=nightly)** and pushed to **[Docker hub](https://hub.docker.com/r/oneinstack/php-fpm/)** on success. This is all done automatically to ensure that sources as well as base images are always fresh and in case of security updates always have the latest patches.
 
 
-
-<h2><img id="automated-builds" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Automated builds</h2>
-
-[![nightly](https://github.com/devilbox/docker-php-fpm/workflows/nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm/actions?workflow=nightly)
-
-Docker images are built and tested every night by **[GitHub Actions](https://github.com/devilbox/docker-php-fpm/actions?workflow=nightly)** and pushed to **[Docker hub](https://hub.docker.com/r/devilbox/php-fpm/)** on success. This is all done automatically to ensure that sources as well as base images are always fresh and in case of security updates always have the latest patches.
-
-
-
-<h2><img id="build-your-own-image" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Build your own image</h2>
+<h2>Build your own image</h2>
 
 You are not interested in the provided Docker images and want to (ab)use this repository purely to generate your own custom images?
 You can do so with three easy commands:
@@ -489,8 +401,7 @@ make build STAGE=mods VERSION=8.1 ARCH=linux/arm64
 :information_source: For details see **[Abuser Documentation: Build your own image](doc/abuser/README.md)**
 
 
-
-<h2><img id="contributing" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Contributing</h2>
+<h2>Contributing</h2>
 
 Contributors are welcome. Feel free to star and clone this repository and submit issues and pull-requests. Add examples and show what you have created with the provided images. If you see any errors or ways to improve this repository in any way, please do so.
 
@@ -498,144 +409,9 @@ Contributors are welcome. Feel free to star and clone this repository and submit
 :information_source: For details see **[Contributor Documentation: PHP Tools definitions](php_tools/README.md)**
 
 
-
-<h2><img id="related-projects" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Related Project</h2>
-
-If you want to add custom modules, tools or apply any other changes, but don't think it fits in here, you can do so over at the **[PHP-FPM Community Images](https://github.com/devilbox/docker-php-fpm-community)**.
-
-See the reference implementation below:
-
-<!-- PROJECTS_START -->
-| Project                               | Author                                          | build                                         | Architecture                          | Docker Tag                   |
-|---------------------------------------|-------------------------------------------------|-----------------------------------------------|---------------------------------------|------------------------------|
-| :file_folder: [devilbox/]             | :octocat: [cytopia] (cytopia)                   | [![devilbox_build]](https://github.com/devilbox/docker-php-fpm-community/actions/workflows/devilbox_action.yml)<br/>[![devilbox_nightly]](https://github.com/devilbox/docker-php-fpm-community/actions/workflows/devilbox_action_schedule.yml)| :computer: amd64<br/>:computer: arm64 | `<V>-devilbox`               |
-
-[devilbox/]: https://github.com/devilbox/docker-php-fpm-community/tree/master/Dockerfiles/devilbox
-[cytopia]: https://github.com/cytopia
-[devilbox_build]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_build/badge.svg
-[devilbox_nightly]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg
-> <sup> :information_source: `<V>` in the Docker tag above stands for the PHP version. E.g.: `5.4` or `8.1`, etc</sup>
-<!-- PROJECTS_END -->
-
-
-
-<h2><img id="sister-projects" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Sister Projects</h2>
-
-Show some love for the following sister projects.
-
-<table>
- <tr>
-  <th>🖤 Project</th>
-  <th>🐱 GitHub</th>
-  <th>🐋 DockerHub</th>
- </tr>
- <tr>
-  <td><a title="Devilbox" href="https://github.com/cytopia/devilbox" ><img width="256px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/01/png/banner_256_trans.png" /></a></td>
-  <td><a href="https://github.com/cytopia/devilbox"><code>Devilbox</code></a></td>
-  <td></td>
- </tr>
- <tr>
-  <td><a title="Docker MySQL" href="https://github.com/devilbox/docker-mysql" ><img width="256px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/04/png/banner_256_trans.png" /></a></td>
-  <td><a href="https://github.com/devilbox/docker-mysql"><code>docker-mysql</code></a></td>
-  <td><a href="https://hub.docker.com/r/devilbox/mysql"><code>devilbox/mysql</code></a></td>
- </tr>
- <tr>
-  <td><img width="256px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/05/png/banner_256_trans.png" /></td>
-  <td>
-   <a href="https://github.com/devilbox/docker-apache-2.2"><code>docker-apache-2.2</code></a><br/>
-   <a href="https://github.com/devilbox/docker-apache-2.4"><code>docker-apache-2.4</code></a><br/>
-   <a href="https://github.com/devilbox/docker-nginx-stable"><code>docker-nginx-stable</code></a><br/>
-   <a href="https://github.com/devilbox/docker-nginx-mainline"><code>docker-nginx-mainline</code></a>
-  </td>
-  <td>
-   <a href="https://hub.docker.com/r/devilbox/apache-2.2"><code>devilbox/apache-2.2</code></a><br/>
-   <a href="https://hub.docker.com/r/devilbox/apache-2.4"><code>devilbox/apache-2.4</code></a><br/>
-   <a href="https://hub.docker.com/r/devilbox/nginx-stable"><code>devilbox/nginx-stable</code></a><br/>
-   <a href="https://hub.docker.com/r/devilbox/nginx-mainline"><code>devilbox/nginx-mainline</code></a>
-  </td>
- </tr>
-</table>
-
-
-
-<h2><img id="community" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Community</h2>
-
-In case you seek help, go and visit the community pages.
-
-<table width="100%" style="width:100%; display:table;">
- <thead>
-  <tr>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">📘 Documentation</a></h3></th>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://discord.gg/2wP3V6kBj4">🎮 Discord</a></h3></th>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.discourse.group">🗪 Forum</a></h3></th>
-  </tr>
- </thead>
- <tbody style="vertical-align: middle; text-align: center;">
-  <tr>
-   <td>
-    <a target="_blank" href="https://devilbox.readthedocs.io">
-     <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
-    </a>
-   </td>
-   <td>
-    <a target="_blank" href="https://discord.gg/2wP3V6kBj4">
-     <img title="Chat on Discord" name="Chat on Discord" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discord.png" />
-    </a>
-   </td>
-   <td>
-    <a target="_blank" href="https://devilbox.discourse.group">
-     <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
-    </a>
-   </td>
-  </tr>
-  <tr>
-  <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
-  <td><a target="_blank" href="https://discord.gg/2wP3V6kBj4">discord/devilbox</a></td>
-  <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
-  </tr>
- </tbody>
-</table>
-
-
-
-<h2><img id="credits" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Credits</h2>
+<h2>Credits</h2>
 
 Thanks for contributing 🖤
 
-- **[@mrLexx](https://github.com/mrLexx)**
-- **[@fibis](https://github.com/fibis)**
-- **[@llaville](https://github.com/llaville)**
-- **[@anatolinicolae](https://github.com/anatolinicolae)**
-- **[@fschndr](https://github.com/fschndr)**
-- **[@Tuurlijk](https://github.com/Tuurlijk)**
-
-
-
-<h2><img id="maintainer" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Maintainer</h2>
-
-**[@cytopia](https://github.com/cytopia)**
-
-I try to keep up with literally **over 100 projects** besides a full-time job.
-If my work is making your life easier, consider contributing. 🖤
-
-* [GitHub Sponsorship](https://github.com/sponsors/cytopia)
-* [Patreon](https://www.patreon.com/devilbox)
-* [Open Collective](https://opencollective.com/devilbox)
-
-**Findme:**
-**🐱** [cytopia](https://github.com/cytopia) / [devilbox](https://github.com/devilbox) |
-**🐋** [cytopia](https://hub.docker.com/r/cytopia/) / [devilbox](https://hub.docker.com/r/devilbox/) |
-**🐦** [everythingcli](https://twitter.com/everythingcli) / [devilbox](https://twitter.com/devilbox) |
-**📖** [everythingcli.org](http://www.everythingcli.org/)
-
-**Contrib:** PyPI: [cytopia](https://pypi.org/user/cytopia/) **·**
-Terraform: [cytopia](https://registry.terraform.io/namespaces/cytopia) **·**
-Ansible: [cytopia](https://galaxy.ansible.com/cytopia)
-
-
-
-<h2><img id="license" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> License</h2>
-
-**[MIT License](LICENSE.md)**
-
-Copyright (c) 2017 [cytopia](https://github.com/cytopia)
+- **[@cytopia](https://github.com/cytopia)**
+- **[@devilbox](https://github.com/devilbox)**
